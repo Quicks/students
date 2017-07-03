@@ -11,8 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [function () {
     return view('welcome');
-});
+}, 'as' => 'root']);
+// //
+// Route::get('/testRoute/{id}', function($id){
+//   return view('test_route', ['name' => 'Vasya']);
+// });
+
+// Route::get('testController', 'TestController@index');
 
 Route::resource('news', 'NewsController');
+Route::resource('cats', 'CatsController');

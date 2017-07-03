@@ -1,9 +1,16 @@
 @extends('layouts.app')
 @section('content')
+	<style type="text/css">
+		.active{
+			color: green;
+
+		}
+	</style>
 	<h1>Список новостей</h1>
 	<a href="{{route('news.create')}}" class="btn btn-info">
 		Створити новину
 	</a>
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -25,32 +32,87 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($news as $oneNews)
 				<tr>
 					<td>
-						{{ $oneNews->title }}		
+						title1		
 					</td>
 					<td>
-						{{ $oneNews->desc }}		
+						desc1
 					</td>
 					<td>
-						{{ $oneNews->published }}		
+						man1
 					</td>
 					<td>
-						{{ $oneNews->publidshedDate }}		
+						publish
+					</td>
+				</tr>	
+				<tr class='active'>
+					<td>
+						title2		
 					</td>
 					<td>
-						<a href="{{route('news.show', $oneNews->id)}}">		dsadsa
-						</a>
+						desc12
+					</td>
+					<td>
+						man12
+					</td>
+					<td>
+						publish2
 					</td>
 				</tr>	
 
-				
+				<tr>
+					<td>
+						title1		
+					</td>
+					<td>
+						desc1
+					</td>
+					<td>
+						man1
+					</td>
+					<td>
+						publish
+					</td>
+				</tr>	
 
-			@endforeach		
 		</tbody>
 		
 	</table>
+<script type="text/javascript">
+	var promise = new Promise(function(resolve, reject){
+	
+			
+			setTimeout(function(){
+				try{
+					throw 500;
+					$('tr').toggleClass('active');
+					resolve();
+				}
+				catch(err){
+					reject(err);
+				}
+				
+				
+			},1000)    
+		
+	})
+	
+	function test(test){ 
+		if(test) 
+			{ 
+				console.log(test)
+			}else{
+				console.log('without test')
+			}
+		} 
 
+	promise.then(function(arr){
+		$('tr').toggleClass('active');
+	}, function(){console.log('dsadsadasds')})	
+	
+
+
+</script>
 
 @endsection

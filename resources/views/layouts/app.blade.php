@@ -3,7 +3,7 @@
 <head>
 	<title>Students</title>
 
-	<!-- Latest compiled and minified CSS -->	
+	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 	<!-- Optional theme -->
@@ -12,7 +12,7 @@
 	<script
 	  src="https://code.jquery.com/jquery-2.2.4.min.js"
 	  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-	  crossorigin="anonymous">  	
+	  crossorigin="anonymous">
     </script>
 
 	<!-- Latest compiled and minified JavaScript -->
@@ -22,8 +22,8 @@
 <body>
 	@include('layouts.header')
 	<div class="container">
-		@yield('content')	
+		@yield('content')
 	</div>
-	
+
 </body>
 </html>

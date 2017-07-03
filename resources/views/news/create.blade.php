@@ -16,4 +16,12 @@
 
 	{{ Form::submit('Зберегти') }}
 	{{ Form::close() }}
+
+	<script type="text/javascript">
+		$('form').submit(function(){
+			console.log(this.elements);
+			
+		})
+
+	</script>
 @endsection
