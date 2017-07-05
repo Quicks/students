@@ -41,7 +41,7 @@ class CatsController extends Controller
     {
       $cat = new Cat($request->all());
       $cat->save();
-      return redirect()->route('cats.index');
+      return redirect()->route('cats.show', $cat->id);
     }
 
     /**
@@ -52,7 +52,9 @@ class CatsController extends Controller
      */
     public function show($id)
     {
-        //
+      $cat = Cat::find($id);
+      return view('cats.show')
+        ->with('cat', $cat);
     }
 
     /**
@@ -63,7 +65,8 @@ class CatsController extends Controller
      */
     public function edit($id)
     {
-        //
+      $cat = Cat::find($id);
+      return view('cats.edit')->with('cat', $cat);
     }
 
     /**
@@ -75,7 +78,9 @@ class CatsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $cat = Cat::find($id);
+      $cat->update($request->all());
+      return redirect()->route('cats.show', $cat->id);
     }
 
     /**
@@ -86,6 +91,7 @@ class CatsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $cat = Cat::destroy($id);
+      return redirect()->route('cats.index');
     }
 }
