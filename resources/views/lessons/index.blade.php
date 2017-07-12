@@ -5,6 +5,7 @@
   <thead>
     <tr>
       <td>date</td>
+      <td>description</td>
       <td>username</td>
       <td>actions</td>
     </tr>
@@ -14,6 +15,9 @@
       <tr>
         <td>
           {{$lesson->lesson_date}}
+        </td>
+        <td>
+          {{$lesson->description}}
         </td>
         <td>
           @if($lesson->user)

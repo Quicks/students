@@ -24,4 +24,7 @@ Route::get('/', [function () {
 Route::resource('news', 'NewsController');
 Route::resource('cats', 'CatsController');
 Route::resource('lessons', 'LessonsController');
-Route::get('lessons/users', 'LessonsController@users');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
