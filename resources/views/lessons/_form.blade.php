@@ -15,6 +15,7 @@
   {{ Form::label('description', 'Description') }}
   {{ Form::textarea('description', $lesson->description, ['class' => 'form-control']) }}
   {!! $errors->first('description','<span class="help-block">:message</span>') !!}
+  {{ Form::file('img') }}
 
 </div>
 

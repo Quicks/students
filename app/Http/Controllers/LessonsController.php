@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Lesson;
 use App\User;
 use Auth;
+use Storage;
+use File;
 class LessonsController extends Controller
 {
     /**
@@ -15,9 +17,8 @@ class LessonsController extends Controller
      */
     public function index()
     {
-      // $lessons = Auth::user()->lessons()->where('status',1)->where('group', 'b16')->where('age', '<', 38 );
-      // select * from lessons where user_id = 2 and status = 1
       $lessons = Auth::user()->lessons;
+
       return view('lessons.index')
         ->with('lessons',$lessons);
     }
@@ -46,6 +47,7 @@ class LessonsController extends Controller
         'description' => 'required',
       ]);
       $lesson = new Lesson($request->all());
+      $lesson->img = Storage::put('public/images', $request->img);
       $lesson->user_id = Auth::user()->id;
       $lesson->save();
       return redirect()->route('lessons.show', $lesson->id);
@@ -72,7 +74,7 @@ class LessonsController extends Controller
      */
     public function edit($id)
     {
-      // $lesson = Lesson::find($lesson_date);
+
       $lesson = Auth::user()->lessons->find($id);
       return view('lessons.edit')->with('lesson', $lesson);
     }
@@ -86,11 +88,21 @@ class LessonsController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request, [
-        'lesson_date' => 'required',
-        'description' => 'required',
-      ]);
+      // $this->validate($request, [
+      //   'lesson_date' => 'required',
+      //   'description' => 'required',
+      // ]);\
       $lesson = Auth::user()->lessons->find($id);
+      // dd($request->file('image')->store('avatars'));
+
+      // if( $request->hasFile('image') ) {
+      //   $file = $request->file('image');
+      //   $folderPath = 'test';
+      //   $filename = $file->getClientOriginalName();
+      //   $file->move($folderPath, $filename);
+      //   $lesson->img = $folderPath.'/'.$filename;
+      // }
+      $lesson->img = Storage::put('public/images', $request->file('img'));
       $lesson->update($request->all());
       return redirect()->route('lessons.show', $lesson->id);
 

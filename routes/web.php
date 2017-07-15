@@ -23,7 +23,7 @@ Route::get('/', [function () {
 
 Route::resource('news', 'NewsController');
 Route::resource('cats', 'CatsController');
-Route::resource('lessons', 'LessonsController');
+Route::resource('lessons', 'LessonsController', ['middleware' => 'auth']);
 
 Auth::routes();
 

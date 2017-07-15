@@ -1,3 +1,8 @@
+<style>
+  .lesson-img{
+    height: 150px;
+  }
+</style>
 @extends('layouts.app')
 @section('content')
 <h1>Lessons list</h1>
@@ -7,6 +12,7 @@
       <td>date</td>
       <td>description</td>
       <td>username</td>
+
       <td>actions</td>
     </tr>
   </thead>
@@ -17,7 +23,7 @@
           {{$lesson->lesson_date}}
         </td>
         <td>
-          {{$lesson->description}}
+          <img src="{{Storage::url($lesson->img)}}" class="lesson-img img">
         </td>
         <td>
           @if($lesson->user)
