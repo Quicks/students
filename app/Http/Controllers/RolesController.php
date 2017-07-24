@@ -13,7 +13,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        //
+      $roles = Role::all();
+      return view('roles.index', compact('roles'));
     }
 
     /**
@@ -25,7 +26,6 @@ class RolesController extends Controller
     {
       $role = new Role();
       return view('roles.create')->with('role', $role);
-
     }
 
     /**
@@ -59,7 +59,8 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        //
+      $role = Role::find($id);
+      return view('roles.edit', compact('role'));
     }
 
     /**
@@ -71,7 +72,10 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $role = Role::find($id);
+      $role->update($request->all());
+      dd($role->users);
+      return redirect(route('roles.index'));
     }
 
     /**

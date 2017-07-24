@@ -7,11 +7,8 @@
 @section('content')
 <link href="/css/test.css" rel="stylesheet">
 
-<div class="test-back-image">
 
-</div>
 
-<!--
 <h1 class='test'>Lessons list</h1>
 <table class="table">
   <thead>
@@ -44,6 +41,6 @@
     @endforeach
   </tbody>
 </table>
-<a class='btn btn-success pull-right' href='{{route('lessons.create')}}'>New lesson</a> -->
+<a class='btn btn-success pull-right' href='{{route('lessons.create')}}'>New lesson</a>
 
 @endsection

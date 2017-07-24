@@ -18,7 +18,6 @@ class LessonsController extends Controller
     public function index()
     {
       $lessons = Auth::user()->lessons;
-      dd($lessons->first()->user);
       return view('lessons.index')
         ->with('lessons',$lessons);
     }
@@ -74,7 +73,6 @@ class LessonsController extends Controller
      */
     public function edit($id)
     {
-
       $lesson = Auth::user()->lessons->find($id);
       return view('lessons.edit')->with('lesson', $lesson);
     }
@@ -92,7 +90,9 @@ class LessonsController extends Controller
       //   'lesson_date' => 'required',
       //   'description' => 'required',
       // ]);\
+      Auth::user()->lessons()->where('id', $id)->update(array( 'description'=> 'test' ));
       $lesson = Auth::user()->lessons->find($id);
+
       // dd($request->file('image')->store('avatars'));
 
       // if( $request->hasFile('image') ) {
@@ -102,8 +102,8 @@ class LessonsController extends Controller
       //   $file->move($folderPath, $filename);
       //   $lesson->img = $folderPath.'/'.$filename;
       // }
-      $lesson->img = Storage::put('public/images', $request->file('img'));
-      $lesson->update($request->all());
+      // $lesson->img = Storage::put('public/images', $request->file('img'));
+      // $lesson->update($request->all());
       return redirect()->route('lessons.show', $lesson->id);
 
     }
