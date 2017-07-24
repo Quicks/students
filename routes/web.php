@@ -22,8 +22,11 @@ Route::get('/', [function () {
 // Route::get('testController', 'TestController@index');
 
 Route::resource('news', 'NewsController');
+Route::resource('lessons', 'LessonsController', ['middleware' => ['auth']]);
 Route::resource('cats', 'CatsController');
-Route::resource('lessons', 'LessonsController', ['middleware' => 'auth']);
+Route::resource('content_blocks', 'ContentBlocksController', ['middleware' => ['auth']]);
+Route::resource('roles', 'RolesController', ['middleware' => ['auth']]);
+
 
 Auth::routes();
 

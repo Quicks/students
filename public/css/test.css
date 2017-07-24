@@ -1,0 +1,8 @@
+.test{
+  color: gray;
+}
+
+.test-back-image{
+  height: 200px;
+  background-image: url('/images/test_back.jpeg');
+}

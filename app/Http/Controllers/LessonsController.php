@@ -18,7 +18,7 @@ class LessonsController extends Controller
     public function index()
     {
       $lessons = Auth::user()->lessons;
-
+      dd($lessons->first()->user);
       return view('lessons.index')
         ->with('lessons',$lessons);
     }

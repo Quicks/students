@@ -31,4 +31,14 @@ class User extends Authenticatable
     {
        return $this->hasMany('App\Lesson');
     }
+
+    public function roles(){
+      return $this->belongsToMany('App\Role', 'user_role');
+    }
+
+    public function isAdmin(){
+      return true;
+    }
+
+
 }

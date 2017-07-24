@@ -21,9 +21,9 @@ class LoginController extends Controller
     use AuthenticatesUsers;
     public function authenticated()
     {
-      if ( auth()->user()->isAdmin() ) {
-          return redirect()->route('admin.index');
-      }
+      // if ( auth()->user()->isAdmin() ) {
+      //     return redirect()->route('admin.index');
+      // }
 
      return redirect('/home');
     }
