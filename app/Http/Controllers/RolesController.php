@@ -60,7 +60,7 @@ class RolesController extends Controller
     public function edit($id)
     {
       $role = Role::find($id);
-      return view('roles.edit', compact('role'));
+      return view('roles.editForm', compact('role'));
     }
 
     /**
@@ -74,8 +74,13 @@ class RolesController extends Controller
     {
       $role = Role::find($id);
       $role->update($request->all());
-      dd($role->users);
       return redirect(route('roles.index'));
+    }
+
+    public function toJson($id){
+      $role = Role::find($id);
+      \Session::flash('success', 'Office successfully added.');
+      return $role->toJson();
     }
 
     /**

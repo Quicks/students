@@ -26,6 +26,7 @@ Route::resource('lessons', 'LessonsController', ['middleware' => ['auth']]);
 Route::resource('cats', 'CatsController');
 Route::resource('content_blocks', 'ContentBlocksController', ['middleware' => ['auth']]);
 Route::resource('roles', 'RolesController', ['middleware' => ['auth']]);
+Route::get('roles/{role}/toJson', 'RolesController@toJson')->name('roles.toJson');
 
 
 Auth::routes();

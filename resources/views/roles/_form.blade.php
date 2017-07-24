@@ -21,7 +21,7 @@
 {{Form::submit('Зберегти', ['class' => 'btn btn-success'])}}
 <script>
   $(document).ready(function(){
-    $('.ckeditor').ckeditor();
+    console.log('dasdaasd')
   })
 
 
